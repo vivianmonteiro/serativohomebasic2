@@ -126,6 +126,9 @@
     const [borgRatings, setBorgRatings] = useState([]);
     const [profileData, setProfileData] = useState({ nome: "Maria Santos", id: "HC-2024-0042" });
     const [videos, setVideos] = useState(Object.assign({}, S.DEFAULT_VIDEOS));
+    // Treinos editáveis — iniciam com os exercícios padrão mas podem ser modificados
+    const [treinoA, setTreinoA] = useState(S.TREINO_A_DEFAULT.map(e => Object.assign({}, e)));
+    const [treinoB, setTreinoB] = useState(S.TREINO_B_DEFAULT.map(e => Object.assign({}, e)));
 
     const showNav = ["home", "sessions", "progress", "profile"].includes(screen);
 
@@ -133,7 +136,7 @@
     if (screen === "splash") screenEl = h(S.SplashScreen, { onDone: () => setScreen("home") });
     else if (screen === "home") screenEl = h(S.HomeScreen, { setScreen, setSelectedSession, completedSessions });
     else if (screen === "sessions") screenEl = h(S.SessionsScreen, { setScreen, setSelectedSession, completedSessions });
-    else if (screen === "session-detail") screenEl = h(S.SessionDetailScreen, { session: selectedSession, setScreen, setActiveWorkout, videos });
+    else if (screen === "session-detail") screenEl = h(S.SessionDetailScreen, { session: selectedSession, setScreen, setActiveWorkout, videos, treinoA, treinoB });
     else if (screen === "workout" && activeWorkout) screenEl = h(S.WorkoutScreen, { activeWorkout, setScreen, setCompletedSessions, completedSessions, setBorgSession });
     else if (screen === "borg") screenEl = h(S.BorgScreen, { borgSession, setScreen, setBorgRatings });
     else if (screen === "session-complete") screenEl = h(S.SessionCompleteScreen, { setScreen, borgSession, borgRatings });
@@ -141,6 +144,7 @@
     else if (screen === "profile") screenEl = h(S.ProfileScreen, { setScreen, onProfileChange: setProfileData });
     else if (screen === "report") screenEl = h(S.ReportScreen, { setScreen, completedSessions, borgRatings, profile: profileData });
     else if (screen === "video-manager") screenEl = h(VideoManagerScreen, { setScreen, videos, setVideos });
+    else if (screen === "workout-manager") screenEl = h(S.WorkoutManagerScreen, { setScreen, treinoA, setTreinoA, treinoB, setTreinoB });
     else screenEl = h(S.HomeScreen, { setScreen, setSelectedSession, completedSessions });
 
     return h("div", { style: { minHeight: "100vh", background: COLORS.gray, fontFamily: FONT_TEXT } },

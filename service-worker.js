@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   "./app-screens-3.js",
   "./app-screens-4.js",
   "./app-screens-5.js",
+  "./app-screens-6.js",
   "./app-main.js",
   "./icons/icon-72.png",
   "./icons/icon-96.png",

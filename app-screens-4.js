@@ -236,6 +236,7 @@
         // Menu items
         [
           { icon: "📄", title: "Relatórios da equipe", sub: "Visualizar e exportar PDF", action: () => setScreen && setScreen("report") },
+          { icon: "✏️", title: "Gerenciar Treinos", sub: "Editar exercícios, séries e repetições", action: () => setScreen && setScreen("workout-manager") },
           { icon: "🎬", title: "Vídeos dos exercícios", sub: "Gerenciar links de demonstração", action: () => setScreen && setScreen("video-manager") },
           { icon: "❓", title: "Dúvidas frequentes", sub: "Perguntas sobre os treinos", action: null },
           { icon: "🛡️", title: "Privacidade e dados", sub: "Suas informações estão seguras", action: null },

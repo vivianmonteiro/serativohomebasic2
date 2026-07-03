@@ -8,11 +8,13 @@
   const TREINO_A = S.TREINO_A, TREINO_B = S.TREINO_B, BORG_SCALE = S.BORG_SCALE;
   const getYoutubeId = S.getYoutubeId, VideoModal = S.VideoModal;
 
-  function SessionDetailScreen({ session, setScreen, setActiveWorkout, videos }) {
+  function SessionDetailScreen({ session, setScreen, setActiveWorkout, videos, treinoA, treinoB }) {
     const [activeVideo, setActiveVideo] = useState(null);
     if (!session) return null;
 
-    const exercises = session.tipo === "A" ? TREINO_A : TREINO_B;
+    const currentTreinoA = treinoA || S.TREINO_A;
+    const currentTreinoB = treinoB || S.TREINO_B;
+    const exercises = session.tipo === "A" ? currentTreinoA : currentTreinoB;
     const equipamentos = session.tipo === "A" ? ["Cadeira", "Tapete"] : ["Elástico", "Cadeira", "Tapete"];
     const safeVideos = videos || {};
     const totalVideos = exercises.filter(ex => getYoutubeId(safeVideos[`${session.tipo}-${ex.id}`])).length;

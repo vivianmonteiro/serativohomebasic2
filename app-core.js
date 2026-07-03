@@ -206,12 +206,17 @@ function VideoModal({ videoUrl, exerciseName, onClose }) {
   );
 }
 
+// Cópias imutáveis dos treinos originais (para botão "Redefinir")
+const TREINO_A_DEFAULT = TREINO_A.map(e => Object.assign({}, e));
+const TREINO_B_DEFAULT = TREINO_B.map(e => Object.assign({}, e));
+
 // Export to global scope (loaded by other script files in order)
 window.SerAtivo = window.SerAtivo || {};
 Object.assign(window.SerAtivo, {
   h, useState, useEffect, useRef,
   COLORS, FONT_TITLE, FONT_TEXT,
   DEFAULT_VIDEOS, getYoutubeId,
-  TREINO_A, TREINO_B, SESSIONS, BORG_SCALE, AVATARS,
+  TREINO_A, TREINO_B, TREINO_A_DEFAULT, TREINO_B_DEFAULT,
+  SESSIONS, BORG_SCALE, AVATARS,
   Logo, BottomNav, VideoModal,
 });
